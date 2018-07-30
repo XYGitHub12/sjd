@@ -18,6 +18,7 @@
         <module>sjd-portal-interface</module>
         <module>sjd-portal-pojo</module>
         <module>sjd-portal-service</module>
+        <module>sjd-portal-web</module>
     </modules>
 
     <dependencies>
