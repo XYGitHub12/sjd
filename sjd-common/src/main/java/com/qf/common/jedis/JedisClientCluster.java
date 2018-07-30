@@ -1,4 +1,4 @@
-package com.qf.manager.common;
+package com.qf.common.jedis;
 
 import redis.clients.jedis.JedisCluster;
 

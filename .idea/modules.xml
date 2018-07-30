@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/sjd-common/sjd-common.iml" filepath="$PROJECT_DIR$/sjd-common/sjd-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-manager/sjd-manager.iml" filepath="$PROJECT_DIR$/sjd-manager/sjd-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-manager/sjd-manager-dao/sjd-manager-dao.iml" filepath="$PROJECT_DIR$/sjd-manager/sjd-manager-dao/sjd-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-manager/sjd-manager-interface/sjd-manager-interface.iml" filepath="$PROJECT_DIR$/sjd-manager/sjd-manager-interface/sjd-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-manager/sjd-manager-pojo/sjd-manager-pojo.iml" filepath="$PROJECT_DIR$/sjd-manager/sjd-manager-pojo/sjd-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-manager/sjd-manager-service/sjd-manager-service.iml" filepath="$PROJECT_DIR$/sjd-manager/sjd-manager-service/sjd-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-manager/sjd-manager-web/sjd-manager-web.iml" filepath="$PROJECT_DIR$/sjd-manager/sjd-manager-web/sjd-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-parent/sjd-parent.iml" filepath="$PROJECT_DIR$/sjd-parent/sjd-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-portal/sjd-portal.iml" filepath="$PROJECT_DIR$/sjd-portal/sjd-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-portal/sjd-portal-dao/sjd-portal-dao.iml" filepath="$PROJECT_DIR$/sjd-portal/sjd-portal-dao/sjd-portal-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-portal/sjd-portal-interface/sjd-portal-interface.iml" filepath="$PROJECT_DIR$/sjd-portal/sjd-portal-interface/sjd-portal-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-portal/sjd-portal-pojo/sjd-portal-pojo.iml" filepath="$PROJECT_DIR$/sjd-portal/sjd-portal-pojo/sjd-portal-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-portal/sjd-portal-service/sjd-portal-service.iml" filepath="$PROJECT_DIR$/sjd-portal/sjd-portal-service/sjd-portal-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sjd-portal/sjd-portal-web/sjd-portal-web.iml" filepath="$PROJECT_DIR$/sjd-portal/sjd-portal-web/sjd-portal-web.iml" />
+    </modules>
+  </component>
+</project>

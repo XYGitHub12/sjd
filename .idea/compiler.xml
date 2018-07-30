@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sjd-common" />
+        <module name="sjd-manager-dao" />
+        <module name="sjd-manager-interface" />
+        <module name="sjd-manager-pojo" />
+        <module name="sjd-manager-service" />
+        <module name="sjd-manager-web" />
+        <module name="sjd-portal-dao" />
+        <module name="sjd-portal-interface" />
+        <module name="sjd-portal-pojo" />
+        <module name="sjd-portal-service" />
+        <module name="sjd-portal-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sjd-common" target="1.8" />
+      <module name="sjd-manager" target="1.8" />
+      <module name="sjd-manager-dao" target="1.8" />
+      <module name="sjd-manager-interface" target="1.8" />
+      <module name="sjd-manager-pojo" target="1.8" />
+      <module name="sjd-manager-service" target="1.8" />
+      <module name="sjd-manager-web" target="1.8" />
+      <module name="sjd-parent" target="1.8" />
+      <module name="sjd-portal" target="1.8" />
+      <module name="sjd-portal-dao" target="1.8" />
+      <module name="sjd-portal-interface" target="1.8" />
+      <module name="sjd-portal-pojo" target="1.8" />
+      <module name="sjd-portal-service" target="1.8" />
+      <module name="sjd-portal-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
