@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.manager.dao.TbProductCustomMapper" >
+
+
+
+
+  <select id="countProducts" parameterType="com.qf.manager.pojo.dto.ItemQuery" resultType="_long">
+    select count(1)
+    from tb_product p
+    <where>
+      <if test="itemQuery!=null and itemQuery.title!=null">
+        p.p_name like '%${itemQuery.title}%'
+      </if>
+    </where>
+  </select>
+
+
+  <select id="listProductsByPage" resultType="com.qf.manager.pojo.po.TbProductCustom">
+    select p.*,t.type_name
+    from tb_product p left join tb_product_type t
+    on p.p_type=t.type_id
+    <where>
+      <if test="itemQuery!=null and itemQuery.title!=null">
+        p.p_name like '%${itemQuery.title}%'
+      </if>
+    </where>
+    limit #{pageParam.offset},#{pageParam.limit}
+  </select>
+</mapper>

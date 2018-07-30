@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.manager.dao.TbUserMapper" >
+    <select id="userCount" parameterType="com.qf.manager.pojo.dto.ItemQuery" resultType="int">
+        SELECT COUNT(*) from tb_user
+        <where>
+            <if test="itemQuery!=null and itemQuery.title!=null">
+                uname like '%${itemQuery.title}%'
+            </if>
+        </where>
+    </select>
+    <select id="getUser" resultType="com.qf.manager.pojo.po.TbUser">
+        SELECT * from tb_user
+        <where>
+            <if test="itemQuery!=null and itemQuery.title!=null">
+                uname like '%${itemQuery.title}%'
+            </if>
+        </where>
+        limit #{pageParam.offset},#{pageParam.limit}
+
+    </select>
+    <select id="getUserByUid" parameterType="java.lang.Integer" resultType="com.qf.manager.pojo.po.TbUser">
+        SELECT * from tb_user where uid=#{uid}
+    </select>
+    <update id="updateUser" parameterType="com.qf.manager.pojo.po.TbUser">
+        UPDATE tb_user
+        <set>
+            <if test="uname!=null and uname!=''">uname=#{uname}, </if>
+            <if test="uname!=null and uname!=''">upwd=#{upwd}, </if>
+            <if test="uname!=null and uname!=''">uphone=#{uphone}, </if>
+            <if test="uname!=null and uname!=''">ulevel=#{ulevel}, </if>
+            <if test="uname!=null and uname!=''">ustatus=#{ustatus}, </if>
+            <if test="uname!=null and uname!=''">usex=#{usex}, </if>
+        </set>
+        where uid=#{uid}
+    </update>
+    <delete id="deleteUserByUid" parameterType="java.lang.Integer">
+        delete FROM  tb_user where uid=#{uid}
+    </delete>
+</mapper>

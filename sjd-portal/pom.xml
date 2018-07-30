@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sjd-parent</artifactId>
+        <groupId>com.qf</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../sjd-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sjd-portal</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>../sjd-search-web</module>
+        <module>sjd-portal-dao</module>
+        <module>sjd-portal-interface</module>
+        <module>sjd-portal-pojo</module>
+        <module>sjd-portal-service</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.qf</groupId>
+            <artifactId>sjd-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

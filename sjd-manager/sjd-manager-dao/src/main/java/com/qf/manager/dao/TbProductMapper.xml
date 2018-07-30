@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.manager.dao.TbProductMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.manager.pojo.po.TbProduct" >
+    <id column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_brand" property="pBrand" jdbcType="VARCHAR" />
+    <result column="p_price" property="pPrice" jdbcType="DOUBLE" />
+    <result column="p_RAM" property="pRam" jdbcType="VARCHAR" />
+    <result column="p_ROM" property="pRom" jdbcType="VARCHAR" />
+    <result column="p_screen_size" property="pScreenSize" jdbcType="VARCHAR" />
+    <result column="p_upload_time" property="pUploadTime" jdbcType="TIMESTAMP" />
+    <result column="p_sales" property="pSales" jdbcType="BIGINT" />
+    <result column="p_picture" property="pPicture" jdbcType="VARCHAR" />
+    <result column="p_desc" property="pDesc" jdbcType="VARCHAR" />
+    <result column="p_type" property="pType" jdbcType="VARCHAR" />
+    <result column="p_type_info" property="pTypeInfo" jdbcType="VARCHAR" />
+    <result column="p_inventory" property="pInventory" jdbcType="BIGINT" />
+    <result column="p_status" property="pStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    p_id, p_name, p_brand, p_price, p_RAM, p_ROM, p_screen_size, p_upload_time, p_sales, 
+    p_picture, p_desc, p_type, p_type_info, p_inventory
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.manager.pojo.po.TbProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_product
+    where p_id = #{pId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_product
+    where p_id = #{pId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qf.manager.pojo.po.TbProductExample" >
+    delete from tb_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qf.manager.pojo.po.TbProduct" >
+    insert into tb_product (p_id, p_name, p_brand, 
+      p_price, p_RAM, p_ROM, 
+      p_screen_size, p_upload_time, p_sales, 
+      p_picture, p_desc, p_type, 
+      p_type_info, p_inventory)
+    values (#{pId,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{pBrand,jdbcType=VARCHAR}, 
+      #{pPrice,jdbcType=DOUBLE}, #{pRam,jdbcType=VARCHAR}, #{pRom,jdbcType=VARCHAR}, 
+      #{pScreenSize,jdbcType=VARCHAR}, #{pUploadTime,jdbcType=TIMESTAMP}, #{pSales,jdbcType=BIGINT}, 
+      #{pPicture,jdbcType=VARCHAR}, #{pDesc,jdbcType=VARCHAR}, #{pType,jdbcType=VARCHAR}, 
+      #{pTypeInfo,jdbcType=VARCHAR}, #{pInventory,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.manager.pojo.po.TbProduct" >
+    insert into tb_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="pBrand != null" >
+        p_brand,
+      </if>
+      <if test="pPrice != null" >
+        p_price,
+      </if>
+      <if test="pRam != null" >
+        p_RAM,
+      </if>
+      <if test="pRom != null" >
+        p_ROM,
+      </if>
+      <if test="pScreenSize != null" >
+        p_screen_size,
+      </if>
+      <if test="pUploadTime != null" >
+        p_upload_time,
+      </if>
+      <if test="pSales != null" >
+        p_sales,
+      </if>
+      <if test="pPicture != null" >
+        p_picture,
+      </if>
+      <if test="pDesc != null" >
+        p_desc,
+      </if>
+      <if test="pType != null" >
+        p_type,
+      </if>
+      <if test="pTypeInfo != null" >
+        p_type_info,
+      </if>
+      <if test="pInventory != null" >
+        p_inventory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pBrand != null" >
+        #{pBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="pPrice != null" >
+        #{pPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="pRam != null" >
+        #{pRam,jdbcType=VARCHAR},
+      </if>
+      <if test="pRom != null" >
+        #{pRom,jdbcType=VARCHAR},
+      </if>
+      <if test="pScreenSize != null" >
+        #{pScreenSize,jdbcType=VARCHAR},
+      </if>
+      <if test="pUploadTime != null" >
+        #{pUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pSales != null" >
+        #{pSales,jdbcType=BIGINT},
+      </if>
+      <if test="pPicture != null" >
+        #{pPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="pDesc != null" >
+        #{pDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="pType != null" >
+        #{pType,jdbcType=VARCHAR},
+      </if>
+      <if test="pTypeInfo != null" >
+        #{pTypeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="pInventory != null" >
+        #{pInventory,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qf.manager.pojo.po.TbProductExample" resultType="java.lang.Integer" >
+    select count(*) from tb_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_product
+    <set >
+      <if test="record.pId != null" >
+        p_id = #{record.pId,jdbcType=INTEGER},
+      </if>
+      <if test="record.pName != null" >
+        p_name = #{record.pName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pBrand != null" >
+        p_brand = #{record.pBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pPrice != null" >
+        p_price = #{record.pPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pRam != null" >
+        p_RAM = #{record.pRam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pRom != null" >
+        p_ROM = #{record.pRom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pScreenSize != null" >
+        p_screen_size = #{record.pScreenSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pUploadTime != null" >
+        p_upload_time = #{record.pUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pSales != null" >
+        p_sales = #{record.pSales,jdbcType=BIGINT},
+      </if>
+      <if test="record.pPicture != null" >
+        p_picture = #{record.pPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pDesc != null" >
+        p_desc = #{record.pDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pType != null" >
+        p_type = #{record.pType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pTypeInfo != null" >
+        p_type_info = #{record.pTypeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pInventory != null" >
+        p_inventory = #{record.pInventory,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_product
+    set p_id = #{record.pId,jdbcType=INTEGER},
+      p_name = #{record.pName,jdbcType=VARCHAR},
+      p_brand = #{record.pBrand,jdbcType=VARCHAR},
+      p_price = #{record.pPrice,jdbcType=DOUBLE},
+      p_RAM = #{record.pRam,jdbcType=VARCHAR},
+      p_ROM = #{record.pRom,jdbcType=VARCHAR},
+      p_screen_size = #{record.pScreenSize,jdbcType=VARCHAR},
+      p_upload_time = #{record.pUploadTime,jdbcType=TIMESTAMP},
+      p_sales = #{record.pSales,jdbcType=BIGINT},
+      p_picture = #{record.pPicture,jdbcType=VARCHAR},
+      p_desc = #{record.pDesc,jdbcType=VARCHAR},
+      p_type = #{record.pType,jdbcType=VARCHAR},
+      p_type_info = #{record.pTypeInfo,jdbcType=VARCHAR},
+      p_inventory = #{record.pInventory,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.manager.pojo.po.TbProduct" >
+    update tb_product
+    <set >
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pBrand != null" >
+        p_brand = #{pBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="pPrice != null" >
+        p_price = #{pPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="pRam != null" >
+        p_RAM = #{pRam,jdbcType=VARCHAR},
+      </if>
+      <if test="pRom != null" >
+        p_ROM = #{pRom,jdbcType=VARCHAR},
+      </if>
+      <if test="pScreenSize != null" >
+        p_screen_size = #{pScreenSize,jdbcType=VARCHAR},
+      </if>
+      <if test="pUploadTime != null" >
+        p_upload_time = #{pUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pSales != null" >
+        p_sales = #{pSales,jdbcType=BIGINT},
+      </if>
+      <if test="pPicture != null" >
+        p_picture = #{pPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="pDesc != null" >
+        p_desc = #{pDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="pType != null" >
+        p_type = #{pType,jdbcType=VARCHAR},
+      </if>
+      <if test="pTypeInfo != null" >
+        p_type_info = #{pTypeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="pInventory != null" >
+        p_inventory = #{pInventory,jdbcType=BIGINT},
+      </if>
+    </set>
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.manager.pojo.po.TbProduct" >
+    update tb_product
+    set p_name = #{pName,jdbcType=VARCHAR},
+      p_brand = #{pBrand,jdbcType=VARCHAR},
+      p_price = #{pPrice,jdbcType=DOUBLE},
+      p_RAM = #{pRam,jdbcType=VARCHAR},
+      p_ROM = #{pRom,jdbcType=VARCHAR},
+      p_screen_size = #{pScreenSize,jdbcType=VARCHAR},
+      p_upload_time = #{pUploadTime,jdbcType=TIMESTAMP},
+      p_sales = #{pSales,jdbcType=BIGINT},
+      p_picture = #{pPicture,jdbcType=VARCHAR},
+      p_desc = #{pDesc,jdbcType=VARCHAR},
+      p_type = #{pType,jdbcType=VARCHAR},
+      p_type_info = #{pTypeInfo,jdbcType=VARCHAR},
+      p_inventory = #{pInventory,jdbcType=BIGINT}
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+</mapper>
