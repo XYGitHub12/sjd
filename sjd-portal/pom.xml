@@ -13,11 +13,11 @@
     <artifactId>sjd-portal</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>../sjd-search-web</module>
         <module>sjd-portal-dao</module>
         <module>sjd-portal-interface</module>
         <module>sjd-portal-pojo</module>
         <module>sjd-portal-service</module>
+        <module>sjd-portal-web</module>
     </modules>
 
     <dependencies>
