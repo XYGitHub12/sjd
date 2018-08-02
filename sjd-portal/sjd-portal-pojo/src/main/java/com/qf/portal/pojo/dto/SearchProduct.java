@@ -6,6 +6,7 @@ public class SearchProduct extends TbProduct {
 
     private Double minPrice;
     private Double maxPrice;
+    private String paixu;
 
     public Double getMinPrice() {
         return minPrice;
@@ -21,5 +22,13 @@ public class SearchProduct extends TbProduct {
 
     public void setMaxPrice(Double maxPrice) {
         this.maxPrice = maxPrice;
+    }
+
+    public String getPaixu() {
+        return paixu;
+    }
+
+    public void setPaixu(String paixu) {
+        this.paixu = paixu;
     }
 }

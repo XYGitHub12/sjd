@@ -1,9 +1,6 @@
 package com.qf.portal.service.impl;
 
-import com.qf.portal.dao.TbEvaluateMapper;
-import com.qf.portal.dao.TbProductMapper;
-import com.qf.portal.dao.TbProductTypeInfoMapper;
-import com.qf.portal.dao.TbProductTypeMapper;
+import com.qf.portal.dao.*;
 import com.qf.portal.pojo.dto.SearchProduct;
 import com.qf.portal.pojo.po.*;
 import com.qf.portal.service.ProductService;
@@ -23,6 +20,8 @@ public class ProductServiceImpl implements ProductService {
     private TbProductTypeInfoMapper tbProductTypeInfoMapper;
     @Autowired
     private TbEvaluateMapper tbEvaluateMapper;
+    @Autowired
+    private TbUserMapper tbUserMapper;
 
     @Override
     public List<TbProduct> showAll() {
@@ -36,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
         if (product.getpName()!=null){
             criteria.andPNameLike("%"+product.getpName()+"%");
         }
-        if (product.getpBrand()!=null){
+        if (product.getpBrand()!=null && !product.getpBrand().equals("全部")){
             criteria.andPBrandEqualTo(product.getpBrand());
         }
         if (product.getMinPrice()>0 && product.getMaxPrice()==0){
@@ -48,20 +47,23 @@ public class ProductServiceImpl implements ProductService {
         if (product.getMinPrice()>0.0 && product.getMaxPrice()>0.0){
             criteria.andPPriceBetween(product.getMinPrice(),product.getMaxPrice());
         }
-        if (product.getpRam()!=null){
+        if (product.getpRam()!=null && !product.getpRam().equals("全部")){
             criteria.andPRamEqualTo(product.getpRam());
         }
-        if (product.getpRom()!=null){
+        if (product.getpRom()!=null && !product.getpRom().equals("全部")){
             criteria.andPRomEqualTo(product.getpRom());
         }
-        if (product.getpScreenSize()!=null){
+        if (product.getpScreenSize()!=null && !product.getpScreenSize().equals("全部")){
             criteria.andPScreenSizeEqualTo(product.getpScreenSize());
         }
-        if (product.getpUploadTime()!=null){
+        if (product.getPaixu()!=null && product.getPaixu().equals("上架时间")){
             tbProductExample.setOrderByClause("p_upload_time DESC");
         }
-        if (product.getpSales()!=-1){
+        if (product.getPaixu()!=null && product.getPaixu().equals("销量")){
             tbProductExample.setOrderByClause("p_sales DESC");
+        }
+        if (product.getPaixu()!=null && product.getPaixu().equals("价格")){
+            tbProductExample.setOrderByClause("p_price ASC");
         }
         List<TbProduct> products = tbProductMapper.selectByExample(tbProductExample);
         return products;
@@ -90,7 +92,13 @@ public class ProductServiceImpl implements ProductService {
         TbEvaluateExample tbEvaluateExample = new TbEvaluateExample();
         TbEvaluateExample.Criteria criteria = tbEvaluateExample.createCriteria();
         criteria.andPidEqualTo(pid);
-        return tbEvaluateMapper.selectByExampleWithBLOBs(tbEvaluateExample);
+        List<TbEvaluate> tbEvaluates = tbEvaluateMapper.selectByExampleWithBLOBs(tbEvaluateExample);
+        for (TbEvaluate t:tbEvaluates
+             ) {
+            t.setUname(tbUserMapper.selectByPrimaryKey(t.getUid()).getUname());
+            t.setUhead(tbUserMapper.selectByPrimaryKey(t.getUid()).getUhead());
+        }
+        return tbEvaluates;
     }
 
     @Override
