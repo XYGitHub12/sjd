@@ -3,13 +3,16 @@ package com.qf.manager.web;
 import com.qf.manager.pojo.dto.ItemQuery;
 import com.qf.manager.pojo.dto.ItemResult;
 import com.qf.manager.pojo.dto.PageParam;
+import com.qf.manager.pojo.po.TbContent;
 import com.qf.manager.pojo.po.TbProduct;
 import com.qf.manager.pojo.po.TbProductCustom;
 import com.qf.manager.pojo.po.TbProductType;
+import com.qf.manager.service.BannerService;
 import com.qf.manager.service.ProductService;
 import com.qf.manager.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +31,8 @@ public class AdminProductController {
 
     @Autowired
     private ProductTypeService productTypeService;
+    @Autowired
+    private BannerService bannerService;
 
     //ajax显示商品列表并分页
     @ResponseBody
@@ -81,6 +86,23 @@ public class AdminProductController {
     public int removeProducts(@RequestParam("ids[]") List<Integer> pids){
         int i= productService.removeProducts(pids);
         return i;
+    }
+
+    //查询轮播图序号回显
+    @RequestMapping("/admin/product/queryBanner")
+    public String queryBanner(Model model){
+        List<TbContent> list = bannerService.queryBanner();
+        model.addAttribute("list",list);
+        return "uploadBanner";
+    }
+
+
+    //更新轮播图URL地址
+    @RequestMapping("/admin/product/updateBannerURL")
+    public@ResponseBody int updateURL(TbContent tbContent){
+        int c = 0;
+        c = bannerService.updateURL(tbContent);
+        return c;
     }
 
 

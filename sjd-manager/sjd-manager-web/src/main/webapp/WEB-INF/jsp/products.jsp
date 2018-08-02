@@ -99,6 +99,9 @@
                             <button class="layui-btn layui-btn-xs dw-refresh">
                                 <i class="layui-icon">&#x1002;</i>刷新
                             </button>
+                            <button class="layui-btn layui-btn-xs layui-btn-warm dw-dailog" dw-url="${pageContext.request.contextPath}/admin/product/queryBanner" dw-title="轮播图" dw-width="100%" dw-height="100%">
+                                <i class="layui-icon">&#xe602;</i>轮播图上传
+                            </button>
                         </div>
                         <hr>
                         <table class="layui-hide" id="articleList"></table>
