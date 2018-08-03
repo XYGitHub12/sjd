@@ -102,6 +102,7 @@ public class AdminProductController {
     public@ResponseBody int updateURL(TbContent tbContent){
         int c = 0;
         c = bannerService.updateURL(tbContent);
+        System.out.print(c);
         return c;
     }
 
