@@ -17,6 +17,26 @@ public class TbEvaluate {
 
     private String content;
 
+    private String uname;
+
+    private String uhead;
+
+    public String getUhead() {
+        return uhead;
+    }
+
+    public void setUhead(String uhead) {
+        this.uhead = uhead;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
     public Integer getEvaluateid() {
         return evaluateid;
     }
